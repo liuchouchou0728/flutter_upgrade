@@ -12,6 +12,7 @@ import 'package:flutter_upgrade/src/liquid_progress_indicator.dart';
 class SimpleAppUpgradeWidget extends StatefulWidget {
   const SimpleAppUpgradeWidget({
     required this.title,
+    this.decorationImage,
     this.titleStyle,
     required this.description,
     this.descriptionStyle,
@@ -34,6 +35,11 @@ class SimpleAppUpgradeWidget extends StatefulWidget {
   /// 升级标题
   ///
   final String title;
+
+  ///
+  /// 升级标题
+  ///
+  final DecorationImage? decorationImage;
 
   ///
   /// 标题样式
@@ -153,6 +159,9 @@ class _SimpleAppUpgradeWidget extends State<SimpleAppUpgradeWidget> {
   ///
   Widget _buildInfoWidget(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        image: widget.decorationImage ?? null,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
