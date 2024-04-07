@@ -136,6 +136,14 @@ class _SimpleAppUpgradeWidget extends State<SimpleAppUpgradeWidget> {
     return Container(
       child: Stack(
         children: <Widget>[
+          if (widget.decorationImage != null)
+            Positioned(
+              child: Container(
+                decoration: BoxDecoration(
+                  image: widget.decorationImage,
+                ),
+              ),
+            ),
           _buildInfoWidget(context),
           if (!widget.force)
             Positioned(
@@ -159,9 +167,6 @@ class _SimpleAppUpgradeWidget extends State<SimpleAppUpgradeWidget> {
   ///
   Widget _buildInfoWidget(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: widget.decorationImage ?? null,
-      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
