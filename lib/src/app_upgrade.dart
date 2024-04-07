@@ -37,6 +37,7 @@ class AppUpgrade {
   static appUpgrade(
     BuildContext context,
     Future<AppUpgradeInfo?> future, {
+    DecorationImage? decorationImage,
     TextStyle? titleStyle,
     TextStyle? descriptionStyle,
     Widget? cancel,
@@ -51,7 +52,7 @@ class AppUpgrade {
   }) {
     future.then((AppUpgradeInfo? appUpgradeInfo) {
       if (appUpgradeInfo != null) {
-        WidgetsBinding.instance!.addPostFrameCallback((_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           _showUpgradeDialog(
             context,
             appUpgradeInfo.title,
@@ -59,6 +60,7 @@ class AppUpgrade {
             apkDownloadUrl: appUpgradeInfo.apkDownloadUrl,
             force: appUpgradeInfo.force,
             titleStyle: titleStyle,
+            decorationImage: decorationImage,
             descriptionStyle: descriptionStyle,
             cancel: cancel,
             okBackgroundColors: okBackgroundColors,
@@ -84,6 +86,7 @@ class AppUpgrade {
     BuildContext context,
     String title,
     String description, {
+    DecorationImage? decorationImage,
     String? apkDownloadUrl,
     bool force = false,
     TextStyle? titleStyle,
@@ -109,6 +112,7 @@ class AppUpgrade {
                       BorderRadius.all(Radius.circular(borderRadius))),
               child: SimpleAppUpgradeWidget(
                 title: title,
+                decorationImage: decorationImage,
                 titleStyle: titleStyle,
                 description: description,
                 descriptionStyle: descriptionStyle,
